@@ -1,0 +1,11 @@
+name: virtual-storage-test
+type: static
+path: "./manifests"
+subcomponents:
+  - name: storageos-op
+    type: helm
+    repositories:
+      storageos: "https://charts.storageos.com"
+    source: https://github.com/storageos/charts/
+    method: git
+    path: stable/storageos-operator
