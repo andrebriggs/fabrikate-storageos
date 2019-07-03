@@ -1,0 +1,5 @@
+config:
+subcomponents:
+  storageos-operator:
+    namespace: "storageos-operator"
+    injectNamespace: true

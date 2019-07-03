@@ -2,7 +2,7 @@ name: virtual-storage-test
 type: static
 path: "./manifests"
 subcomponents:
-  - name: storageos-op
+  - name: storageos-operator
     type: helm
     repositories:
       storageos: "https://charts.storageos.com"
