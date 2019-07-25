@@ -25,6 +25,15 @@ $ kubectl delete all --all -n storageos-operator
 2. Install a release named **kafka**: `$ helm install --name kafka incubator/kafka`
 3. Set the Kafka StatefulSet to use a storageclass that StorageOS supports (see Statefulset defintion [here](https://docs.storageos.com/docs/usecases/kubernetes/kafka))
 
+**Note**: To uninstall Kakfa via Helm
+```
+$ helm list
+NAME              	REVISION	UPDATED                 	STATUS  	CHART                          	APP VERSION	NAMESPACE         
+kafka             	1       	Sun Jun 30 22:15:19 2019	DEPLOYED	kafka-0.16.2                   	5.0.1      	default           
+$ helm delete kafka
+release "kafka" deleted
+```
+
 ## Create Topic
 1. List topics: `$ kubectl -n default exec -ti testclient -- ./bin/kafka-topics.sh --zookeeper kafka-zookeeper:2181 --list`
     a. There should be none initially
