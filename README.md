@@ -25,7 +25,18 @@ $ kubectl delete all --all -n storageos-operator
 2. Install a release named **kafka**: `$ helm install --name kafka incubator/kafka`
 3. Set the Kafka StatefulSet to use a storageclass that StorageOS supports (see Statefulset defintion [here](https://docs.storageos.com/docs/usecases/kubernetes/kafka))
 
-**Note**: To uninstall Kakfa via Helm
+**Note**: If you have issues with Tiller RBAC run (via [link](https://github.com/helm/helm/issues/3130#issuecomment-372931407))
+```
+kubectl --namespace kube-system create serviceaccount tiller
+
+kubectl create clusterrolebinding tiller-cluster-rule \
+ --clusterrole=cluster-admin --serviceaccount=kube-system:tiller
+
+kubectl --namespace kube-system patch deploy tiller-deploy \
+ -p '{"spec":{"template":{"spec":{"serviceAccount":"tiller"}}}}' 
+ ```
+
+## Uninstalling Kakfa via Helm
 ```
 $ helm list
 NAME              	REVISION	UPDATED                 	STATUS  	CHART                          	APP VERSION	NAMESPACE         
